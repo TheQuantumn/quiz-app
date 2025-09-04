@@ -10,7 +10,8 @@ This project features a dynamic **three.js background**, a **timed quiz experien
 
 *(Suggestion: Replace the image below with a screenshot or GIF of your final application)*
 
-![Quiz App Screenshot](./screenshot.png)
+<img width="960" height="441" alt="{A911C07D-804F-40AF-995D-C274FBDE60F9}" src="https://github.com/user-attachments/assets/80723fa3-125a-4442-9b05-7c5d502b8277" />
+
 
 ---
 
