@@ -1,106 +1,51 @@
-React Quiz App
-A clean, responsive, and engaging quiz application built with React. This project features a dynamic three.js background, a timed quiz experience, and a detailed results summary.
+# React Quiz App
 
-Live Demo Link: INSERT YOUR DEPLOYED NETLIFY/VERCEL LINK HERE
+A clean, responsive, and engaging quiz application built with **React**.  
+This project features a dynamic **three.js background**, a **timed quiz experience**, and a **detailed results summary**.
 
-(Suggestion: Replace the image above with a screenshot or GIF of your final application)
+---
 
-Features
-This application meets all the core requirements of the assignment, plus several bonus features to enhance the user experience.
+## 🚀 Live Demo  
+👉 https://todaypay-quiz-app.netlify.app/
 
-Start Screen: A welcoming start screen to begin the quiz.
+*(Suggestion: Replace the image below with a screenshot or GIF of your final application)*
 
-Randomized Questions: Fetches and displays 10 random questions from a larger JSON pool on each attempt.
+![Quiz App Screenshot](./screenshot.png)
 
-30-Second Timer: Each question has a 30-second countdown timer that automatically advances when time runs out.
+---
 
-Progress Bar: A visual progress bar shows the user how far they are through the quiz.
+## ✨ Features
 
-Interactive Quiz: Displays one question at a time with selectable options.
+This application meets all the core requirements of the assignment, plus several bonus features to enhance the user experience:
 
-Score Tracking: Tracks correct and incorrect answers in real-time.
+- **Start Screen**: A welcoming start screen to begin the quiz.
+- **Randomized Questions**: Fetches and displays 10 random questions from a larger JSON pool on each attempt.
+- **30-Second Timer**: Each question has a countdown timer that auto-advances when time runs out.
+- **Progress Bar**: Visual progress indicator to show quiz completion.
+- **Interactive Quiz**: Displays one question at a time with selectable options.
+- **Score Tracking**: Real-time tracking of correct and incorrect answers.
+- **Detailed Results Page**:
+  - Summary of correct and incorrect answers.
+  - Displays the user's answer vs. the correct answer.
+  - Circular **speedometer-style chart** for the final score.
+- **Restart Functionality**: Restart quiz with new random questions.
+- **Responsive Design**: Optimized for both desktop and mobile.
+- **Dynamic Background**: Interactive **three.js ball animation** on desktop (disabled on mobile for performance).
 
-Detailed Results Page:
+---
 
-Shows a summary of which questions were right or wrong.
+## 🛠 Tech Stack
 
-Displays the user's answer vs. the correct answer for each question.
+- **Framework**: React (bootstrapped with Vite)  
+- **Language**: JavaScript (ES6+)  
+- **Styling**: Plain CSS (CSS Variables + Media Queries)  
+- **Animation**: three.js (interactive 3D background)  
+- **Charts**: react-circular-progressbar  
 
-Restart Functionality: Allows the user to restart the quiz, which fetches a new set of random questions.
+---
 
-Responsive Design: The layout is fully responsive and optimized for both desktop and mobile devices.
+## ⚙️ Project Setup & How to Run
 
-Dynamic Background: Features a three.js interactive ball animation as a background on desktop devices. This is disabled on mobile to ensure a smooth, performant, and clickable experience.
-
-Tech Stack
-Framework: React (bootstrapped with Vite)
-
-Language: JavaScript (ES6+)
-
-Styling: Plain CSS with CSS Variables and Media Queries for responsiveness.
-
-Animation: three.js for the interactive 3D background.
-
-Charts: react-circular-progressbar for the results summary chart.
-
-Project Setup & How to Run
-To run this project locally, follow these steps:
-
-Clone the repository:
-
-git clone <your-repository-url>
-
-Navigate to the project directory:
-
-cd quiz-app
-
-Install dependencies:
-
-npm install
-
-Run the development server:
-
-npm run dev
-
-The application will be available at http://localhost:5173 (or the next available port).
-
-Architecture and Design Decisions
-This section outlines the key architectural choices made during the development of this project, as required by the submission guidelines.
-
-1. Component Structure
-The application is built using a modular, component-based architecture to ensure a clear separation of concerns and a predictable one-way data flow.
-
-App.jsx: Acts as the main controller. It manages the overall application state (gameState: 'start', 'quiz', 'results'), fetches the questions, and decides which component to render.
-
-StartScreen.jsx: A simple presentational component that displays the welcome message and the button to begin the quiz.
-
-Quiz.jsx: Manages the state of an active quiz, including the current question index, the user's answers, and the 30-second timer.
-
-QuestionCard.jsx: A presentational component that receives a single question object via props and displays it. It communicates the user's selection back up to the Quiz component.
-
-Results.jsx: Calculates and displays the final score and the detailed answer summary.
-
-Ballpit.jsx: An isolated component containing all the three.js logic for the background animation.
-
-2. State Management
-State is managed using React's built-in hooks (useState and useEffect) to keep the application lightweight without external libraries.
-
-Global State: The primary application state (like the list of questions and the current gameState) is "lifted up" and managed in App.jsx. This makes the overall flow easy to reason about.
-
-Local State: State that is only relevant to a specific component is kept local. For example, the timer and currentQuestionIndex are managed within Quiz.jsx, as no other component needs to know about them.
-
-3. Styling Approach
-Initially, Tailwind CSS was considered, but it was removed to prevent any potential conflicts with the three.js canvas and to have more direct control over the styling.
-
-The final project uses plain CSS with a global stylesheet (index.css) for fonts and CSS variables, and a component-specific stylesheet (App.css) for layout and theming.
-
-CSS Variables are used for the color scheme, making it easy to theme the application consistently.
-
-Media Queries are used to handle responsiveness, ensuring the layout and font sizes adapt correctly for a seamless mobile experience.
-
-4. Performance Considerations
-A key consideration was the performance impact of the three.js animation, especially on mobile devices.
-
-To guarantee a smooth and clickable experience on mobile, a custom hook (useIsMobile.js) was created to detect the screen size. The Ballpit animation is conditionally rendered and completely disabled on mobile devices.
-
-Furthermore, to prevent lag on the results page (which can contain a long list of elements), the Ballpit animation is also unmounted when the user transitions to the results screen, freeing up all associated memory and processing power.
+1. **Clone the repository**  
+   ```bash
+   git clone <your-repository-url>
