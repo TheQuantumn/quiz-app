@@ -3,13 +3,16 @@
 
 /* Basic Reset and Global Styles */
 :root {
-  --bg-primary: #111827;      /* Dark Blue/Gray */
-  --card-bg: #1F2937;        /* Lighter Card BG */
-  --text-primary: #F9FAFB;   /* Off-White */
-  --text-secondary: #D1D5DB; /* Lighter Gray */
-  --accent-color: #4F46E5;     /* Indigo */
-  --correct-color: ##FFFFFF;    /* Green */
-  --incorrect-color: #EF4444;  /* Red */
+  --bg-primary: #111827;
+  --text-primary: #F9FAFB;
+  --accent-color: #4F46E5;
+  --correct-color: #10B981;
+  --incorrect-color: #EF4444;
+}
+
+/* FIX: Ensures padding and borders don't add to element size */
+* {
+  box-sizing: border-box;
 }
 
 body {
