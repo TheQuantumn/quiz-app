@@ -3,15 +3,16 @@ import StartScreen from './components/StartScreen';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import Ballpit from './components/Ballpit';
+import useIsMobile from './hooks/useIsMobile'; // Import our new hook
 import './App.css';
 
 function App() {
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
-  const [gameState, setGameState] = useState('start'); // Manages which screen to show: 'start', 'quiz', or 'results'
+  const [gameState, setGameState] = useState('start');
   const [loading, setLoading] = useState(true);
+  const isMobile = useIsMobile(); // Check if the device is mobile
 
-  // Fetches, shuffles, and selects 10 questions from the JSON file
   const fetchQuestions = () => {
     setLoading(true);
     fetch('/questions.json')
@@ -24,29 +25,24 @@ function App() {
       });
   };
 
-  // This runs once when the app first loads
   useEffect(() => {
     fetchQuestions();
   }, []);
 
-  // Handler to start the quiz from the start screen
   const handleStartQuiz = () => {
     setGameState('quiz');
   };
 
-  // Handler for when the user finishes the quiz
   const handleQuizCompletion = (answers) => {
     setUserAnswers(answers);
     setGameState('results');
   };
 
-  // Handler to restart the quiz from the results screen
   const handleRestartQuiz = () => {
-    fetchQuestions(); // Get a new set of questions
+    fetchQuestions();
     setGameState('start');
   };
 
-  // Helper function to decide which component to render
   const renderGameState = () => {
     if (loading && gameState !== 'results') {
       return <p>Loading questions...</p>;
@@ -65,22 +61,22 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Conditionally render the background animation. It will be removed on the results page. */}
-      {gameState !== 'results' && (
+      {/* --- FIX: Only render Ballpit if NOT mobile and NOT on the results screen --- */}
+      {!isMobile && gameState !== 'results' && (
         <Ballpit
           className="ballpit-canvas"
           colors={[0x007BFF, 0x4C00FF, 0xFF007B, 0x00FF7B]}
           count={200}
           gravity={0.7}
           friction={0.8}
-          wallBounce={1.45}
+          wallBounce={0.95}
           followCursor={true}
         />
       )}
 
       <div className="content-overlay">
         <div className="quiz-container">
-
+          <h1 className="quiz-title">The React Quiz</h1>
           {renderGameState()}
         </div>
       </div>
