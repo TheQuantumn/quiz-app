@@ -73,14 +73,14 @@ function App() {
           count={200}
           gravity={0.7}
           friction={0.8}
-          wallBounce={0.95}
+          wallBounce={1.45}
           followCursor={true}
         />
       )}
 
       <div className="content-overlay">
         <div className="quiz-container">
-          <h1 className="quiz-title">The React Quiz</h1>
+
           {renderGameState()}
         </div>
       </div>
